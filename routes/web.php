@@ -12,8 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::resource('tests', 'TestsController');
-Route::resource('questions', 'QuestionsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function(){
+	Route::get('exam/list', 'DoTestController@list')->name('exam.list');
+	Route::resource('tests', 'TestsController');
+	Route::resource('questions', 'QuestionsController');
+	Route::get('exam/do/{id}', 'DoTestController@do_exam');
+	Route::post('exam/store/{id}', 'DoTestController@store')->name('exam.store');
+});

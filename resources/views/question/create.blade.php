@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
   
 @section('content')
 <div class="row">
@@ -16,34 +16,34 @@
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('type', 'Type', ['class' => 'control-label']) !!}
-            {!! Form::text('type', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('type', null, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('point', 'Point', ['class' => 'control-label']) !!}
-            {!! Form::text('point', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('point', null, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('content', 'Content', ['class' => 'control-label']) !!}
-            {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('answer', 'Answer', ['class' => 'control-label']) !!}
-            {!! Form::text('answer', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('answer', null, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 
-     <div class="col-md-12 text-center">
-                {!! Form::submit('Create', ['class' => 'btn btn-danger']) !!}
-            </div>
+    <div class="col-md-12 text-center">
+        {!! Form::submit('Create', ['class' => 'btn btn-danger']) !!}
+    </div>
 </div>
 {!! Form::close() !!}
 @endsection

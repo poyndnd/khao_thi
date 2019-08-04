@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Question;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionsController extends Controller
 {
@@ -14,9 +15,8 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->paginate(5);
-        // dd($questions);
-         
+        $id = Auth::user()->id;
+        $questions = Question::where('user_id', $id)->paginate(5);
         return view('question.index', compact('questions'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -40,7 +40,7 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         $question = new Question();
-        $question->user_id = 1;
+        $question->user_id = Auth::user()->id;
         $question->type = $request['type'];
         $question->point = $request['point'];
         $question->content = $request['content'];

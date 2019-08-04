@@ -1,29 +1,19 @@
-@extends('products.layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Product</h2>
+    <div class="pannel pannel-default">
+        <div class="pannel-heading text-center">
+            <h3>{{ $test->name }}</h3>
+        </div>
+        <div class="pannel-body">
+            @foreach ($questions as $question)
+            <div>
+                <p>Câu {{ ++$i }}:</p>
+                <p>{{ $question->content }}</p>
+                <p>Đáp án: {{ $question->answer }}</p>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div>
+        @endforeach
         </div>
     </div>
-   
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {{ $product->name }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Details:</strong>
-                {{ $product->detail }}
-            </div>
-        </div>
-    </div>
+    
 @endsection

@@ -1,49 +1,50 @@
-@extends('products.layout')
+@extends('layouts.app')
    
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div>
+    <div class="col-lg-12 margin-tb">
+        <div class="text-center">
+            <h2>Edit Test</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('tests.index') }}"> Back</a>
         </div>
     </div>
-   
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-  
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-   
-         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Name">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Detail:</strong>
-                    <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $product->detail }}</textarea>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-   
-    </form>
+   {!! Form::open(['method' => 'PUT', 'route' => ['tests.update', $test->id]]) !!}
+   <div class="row">
+   	<div class="col-md-6 form-group">
+        {!! Form::label('name', 'Name: ', ['class' => 'control-label']) !!}
+        {!! Form::text('name', $test->name, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+    </div>
+
+	<div class="col-md-6 form-group">
+        {!! Form::label('time', 'Time(min): ', ['class' => 'control-label']) !!}
+        {!! Form::text('time', $test->time, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+    </div>
+   </div>
+    
+
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>Type</th>
+            <th>Point</th>
+            <th>Content</th>
+        </tr>
+        @foreach ($questions as $question) 
+        	<tr>
+					@if(in_array($question->id, $question_checked))
+						<td>{!! Form::checkbox('question_id[]', $question->id, true, []) !!}</td>
+					@else
+						<td>{!! Form::checkbox('question_id[]', $question->id, false, []) !!}</td>
+					@endif       	
+            	<td>{{ $question->type }}</td>
+            	<td>{{ $question->point }}</td>
+            	<td>{{ $question->content }}</td>
+        	</tr>
+        @endforeach
+    </table>
+    <div class="col-md-12 text-center">
+        {!! Form::submit('Update', ['class' => 'btn btn-danger']) !!}
+    </div>
+    {!! Form::close() !!}
 @endsection
