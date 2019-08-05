@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
   
 @section('content')
 <div class="row">
@@ -16,28 +16,28 @@
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('type', 'Type', ['class' => 'control-label']) !!}
-            {!! Form::text('type', $question->type, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('type', $question->type, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('point', 'Point', ['class' => 'control-label']) !!}
-            {!! Form::text('point', $question->point, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('point', $question->point, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('content', 'Content', ['class' => 'control-label']) !!}
-            {!! Form::textarea('content', $question->content, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::textarea('content', $question->content, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::label('answer', 'Answer', ['class' => 'control-label']) !!}
-            {!! Form::text('answer', $question->answer, ['class' => 'form-control', 'placeholder' => '']) !!}
+            {!! Form::text('answer', $question->answer, ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
         </div>
     </div>
 

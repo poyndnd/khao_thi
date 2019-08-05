@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
@@ -13,24 +13,26 @@
     </div>
    
     <div class="row">
-        <div class="col-xs-12 form-group">
+        <div class="col-md-12 form-group">
             <strong>Type:</strong>
-            {{ $question->type }}
+            <p>{{ $question->type }}</p>
         </div>
-
-        <div class="col-xs-12 form-group">           
+            
+        <div class="col-md-12 form-group">           
             <strong>Point:</strong>
-            {{ $question->point }}
+            <p>{{ $question->point }}</p>
         </div>
 
-        <div class="col-xs-12 form-group">           
+        <div class="col-md-12 form-group">           
             <strong>Content:</strong>
-            {{ $question->content }}
+            <p>{{ $question->content }}</p>
         </div>
 
-        <div class="col-xs-12 form-group">           
+        <div class="col-md-12 form-group">           
             <strong>Answer:</strong>
-            {{ $question->answer }}
+            <p>{{ $question->answer }}</p>
         </div>
+
     </div>
+
 @endsection
