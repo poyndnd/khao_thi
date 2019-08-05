@@ -7,7 +7,7 @@
         </div>
         <p id="countdown" class="text-center"></p>
         <div class="pannel-body row">
-            {!! Form::open(['method' => 'POST', 'route' => ['exam.store', $test->id]]) !!}
+            {!! Form::open(['method' => 'POST', 'route' => ['exam.store', $test->id], 'id' => 'form']) !!}
                  @foreach ($questions as $question)
                     <div class="col-md-12">
                         <p>Câu {{ ++$i }}:</p>
@@ -38,7 +38,8 @@
             document.getElementById("countdown").innerHTML = minutes + "Phút " + seconds + "Giây ";
             if (distance < 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "Thời gian đếm ngược đã kết thúc";
+            document.getElementById("countdown").innerHTML = "Thời gian đếm ngược đã kết thúc";
+            document.getElementById("form").submit();
             } 
         }, 1000);
 }

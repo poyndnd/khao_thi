@@ -53,6 +53,6 @@ class DoTestController extends Controller
         $user_has_test->point = $point;
         User_has_Test::create($user_has_test->toArray());
         $test = Test::findOrFail($id);
-        return redirect()->route('exam.list')->with('success','Bạn đã làm được '. $point. '/'. $test->total_point. 'điểm');
+        return redirect()->route('home')->with('success','Bạn đã làm được '. $point. '/'. $test->total_point. 'điểm');
     }
 }

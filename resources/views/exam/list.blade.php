@@ -14,12 +14,13 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    
+
     <table class="table table-bordered">
         <tr>
             <th>No</th>
             <th>Name</th>
             <th>Time</th>
+            <th>Teacher</th>
 
             <th width="280px">Action</th>
         </tr>
@@ -28,7 +29,7 @@
             <td>{{ ++$i }}</td>
             <td>{{ $test->name }}</td>
             <td>{{ $test->time }}</td>
-
+            <td>{{ App\User::find($test->teacher_id)->name }}</td>
             <td>
                 <a class="btn btn-info" href="{{ url('exam/do/'.$test->id) }}">Do Exam</a>
             </td>
