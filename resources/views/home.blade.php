@@ -20,7 +20,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                
+                    
+                    <div>
+                        <p>Bạn đã tạo <a href="{{ url('questions') }}"> {{ $count_question }} câu hỏi</a></p>
+                    </div>
+
+                    <div>
+                        <p>Bạn đã tạo <a href="{{ url('tests') }}"> {{ $count_test }} bài test</a></p>
+                    </div>
+
+                    <div>
+                        <p>Bạn đã làm <a href="{{ url('examCompleted') }}">{{ $count_exam }} bài test</a></p>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -55,4 +55,12 @@ class DoTestController extends Controller
         $test = Test::findOrFail($id);
         return redirect()->route('home')->with('success','Bạn đã làm được '. $point. '/'. $test->total_point. 'điểm');
     }
+
+    public function listExamCompleted()
+    {
+        $user_id = Auth::user()->id;
+        $list_exam = User_has_Test::where('user_id', $user_id)->get();
+        $tests = array();
+        return view('exam.show', compact('list_exam')); 
+    }
 }
