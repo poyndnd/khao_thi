@@ -25,4 +25,5 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::resource('questions', 'QuestionsController');
 	Route::get('exam/do/{id}', 'DoTestController@do_exam');
 	Route::post('exam/store/{id}', 'DoTestController@store')->name('exam.store');
+	Route::get('examCompleted', 'DoTestController@listExamCompleted');
 });
